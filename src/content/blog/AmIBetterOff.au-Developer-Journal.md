@@ -1,6 +1,6 @@
 ---
 title: "AmIBetterOff.au Developer Journal"
-description: "AmIBetterOff.au Developer Journal"
+description: "A developer journal exploring the technical, product and business decisions behind building and growing AmIBetterOff.au."
 pubDate: "May 10 2026"
 heroImage: "/amibetteroff_3.webp"
 tags: ["HTML", "CSS", "JS", "Cloudflare Workers"]
