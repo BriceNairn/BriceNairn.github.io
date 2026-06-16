@@ -37,5 +37,5 @@ The site is automatically deployed to GitHub Pages using GitHub Actions whenever
 
 ## Contact
 - LinkedIn: https://www.linkedin.com/in/bricenairn/
-- GitHub: https://github.com/BriceNairn
-- Portfolio: https://bricenairn.github.io
+- GitHub: https://github.com/BriceNairn/
+- Portfolio: https://bricenairn.github.io/
