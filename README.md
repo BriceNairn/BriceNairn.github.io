@@ -20,8 +20,8 @@ I am a geospatial systems professional with 10+ years of experience across GIS, 
 - [Astro](https://astro.build)
 - [tailwindcss](https://tailwindcss.com/)
 - [DaisyUI](https://daisyui.com/)
-- Github Pages
-- Github Actions
+- [GitHub Pages](https://docs.github.com/en/pages)
+- [GitHub Actions](https://github.com/features/actions)
 
 ## Local Development
 
@@ -36,6 +36,6 @@ The site is automatically deployed to GitHub Pages using GitHub Actions whenever
 
 
 ## Contact
-- LinkedIn
-- GitHub
+- LinkedIn: https://www.linkedin.com/in/bricenairn/
+- GitHub: https://github.com/BriceNairn
 - Portfolio: https://bricenairn.github.io
