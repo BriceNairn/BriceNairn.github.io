@@ -1,0 +1,284 @@
+---
+const { images = [] } = Astro.props;
+---
+
+<div class="slideshow-container">
+  {images.map((image, index) => (
+    <div class="mySlides fade">
+      <div class="numbertext">{index + 1} / {images.length}</div>
+      <img
+        src={image.src}
+        alt={image.alt ?? ""}
+        class="slide-image"
+      />
+    </div>
+  ))}
+
+  <button class="prev" type="button">❮</button>
+  <button class="next" type="button">❯</button>
+</div>
+
+<div class="lightbox">
+  <button class="lightbox-close" type="button">&times;</button>
+  <div class="lightbox-counter"></div>
+  <button class="lightbox-prev" type="button">❮</button>
+  <img class="lightbox-content" />
+  <button class="lightbox-next" type="button">❯</button>
+</div>
+
+<script>
+  function initSlideshows() {
+    document.querySelectorAll(".slideshow-container").forEach((slideshow) => {
+      if (slideshow.dataset.initialized === "true") return;
+      slideshow.dataset.initialized = "true";
+
+      let slideIndex = 1;
+
+      const slides = slideshow.querySelectorAll(".mySlides");
+      const prev = slideshow.querySelector(".prev");
+      const next = slideshow.querySelector(".next");
+
+      const lightbox =
+        slideshow.nextElementSibling?.classList.contains("lightbox")
+          ? slideshow.nextElementSibling
+          : null;
+
+      const lightboxImg = lightbox?.querySelector(".lightbox-content");
+      const closeBtn = lightbox?.querySelector(".lightbox-close");
+      const lightboxPrev = lightbox?.querySelector(".lightbox-prev");
+      const lightboxNext = lightbox?.querySelector(".lightbox-next");
+      const lightboxCounter = lightbox?.querySelector(".lightbox-counter");
+
+      function showSlides(n) {
+        if (slides.length === 0) return;
+
+        if (n > slides.length) slideIndex = 1;
+        if (n < 1) slideIndex = slides.length;
+
+        slides.forEach((slide) => {
+          slide.style.display = "none";
+        });
+
+        slides[slideIndex - 1].style.display = "block";
+      }
+
+      function updateLightboxImage() {
+        const currentImg =
+          slides[slideIndex - 1]?.querySelector(".slide-image");
+
+        if (lightboxImg && currentImg) {
+          lightboxImg.src = currentImg.src;
+          lightboxImg.alt = currentImg.alt;
+        }
+
+        if (lightboxCounter) {
+          lightboxCounter.textContent = `${slideIndex} / ${slides.length}`;
+        }
+      }
+
+      prev?.addEventListener("click", () => {
+        slideIndex -= 1;
+        showSlides(slideIndex);
+      });
+
+      next?.addEventListener("click", () => {
+        slideIndex += 1;
+        showSlides(slideIndex);
+      });
+
+      lightboxPrev?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        slideIndex -= 1;
+        showSlides(slideIndex);
+        updateLightboxImage();
+      });
+
+      lightboxNext?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        slideIndex += 1;
+        showSlides(slideIndex);
+        updateLightboxImage();
+      });
+
+      slideshow.querySelectorAll(".slide-image").forEach((img) => {
+        img.addEventListener("click", () => {
+          lightbox?.classList.add("show");
+          updateLightboxImage();
+        });
+      });
+
+      closeBtn?.addEventListener("click", () => {
+        lightbox?.classList.remove("show");
+      });
+
+      lightbox?.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          lightbox.classList.remove("show");
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (!lightbox?.classList.contains("show")) return;
+
+        if (e.key === "Escape") {
+          lightbox.classList.remove("show");
+        }
+
+        if (e.key === "ArrowLeft") {
+          slideIndex -= 1;
+          showSlides(slideIndex);
+          updateLightboxImage();
+        }
+
+        if (e.key === "ArrowRight") {
+          slideIndex += 1;
+          showSlides(slideIndex);
+          updateLightboxImage();
+        }
+      });
+
+      showSlides(slideIndex);
+    });
+  }
+
+  initSlideshows();
+  document.addEventListener("astro:page-load", initSlideshows);
+</script>
+
+<style>
+.slideshow-container {
+  position: relative;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.mySlides {
+  display: none;
+}
+
+.slide-image {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+  cursor: zoom-in;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.75rem;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  font-size: 1.5rem;
+  user-select: none;
+  z-index: 10;
+}
+
+.prev {
+  left: 1rem;
+}
+
+.next {
+  right: 1rem;
+}
+
+.numbertext {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+  font-size: 0.8rem;
+  z-index: 10;
+}
+
+.fade {
+  animation: fade 0.25s;
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.95);
+}
+
+.lightbox.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-content {
+  max-width: 95vw;
+  max-height: 95vh;
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 10001;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10001;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  color: black;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.lightbox-prev {
+  left: 2rem;
+}
+
+.lightbox-next {
+  right: 2rem;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: white;
+}
+
+@keyframes fade {
+  from { opacity: 0.7; }
+  to { opacity: 1; }
+}
+
+.lightbox-counter {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10001;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+  font-size: 0.9rem;
+}
+</style>
