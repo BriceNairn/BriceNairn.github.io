@@ -2,7 +2,7 @@
 title: "Designing a Digital Engineering Applications Hub with Figma"
 description: "A Figma wireframing project exploring the design of a SharePoint-based Digital Engineering Applications Hub. The concept consolidated GIS and CAD tools, support workflows, and team resources into a single intuitive interface, improving discoverability and reducing friction for internal users."
 pubDate: "Dec 10 2025"
-heroImage: "/public/figma/figma_thumbnail.webp"
+heroImage: "/../../public/figma/figma_thumbnail.webp"
 tags: ["Figma", "Wireframing", "UI/UX Design", "SharePoint", "Internal Tools"]
 ---
 
