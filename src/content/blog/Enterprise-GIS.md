@@ -1,7 +1,7 @@
 ---
 title: "Supporting ArcGIS Enterprise in Production"
 description: "A practical look at supporting ArcGIS Enterprise in production, covering platform administration, automation, troubleshooting and operational delivery."
-pubDate: "Sep 12 2022"
+pubDate: "Dec 15 2025"
 heroImage: "/post_img.webp"
 #badge: "Demo badge"
 tags: ["ESRI", "Enterprise","Administration", "Portal", "Azure"]
