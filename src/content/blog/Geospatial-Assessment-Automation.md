@@ -2,7 +2,7 @@
 title: "From ArcGIS Model Builder to Python Automation"
 description: "Replacing a complex ArcGIS ModelBuilder workflow with a Python-based automation platform that reduced geospatial assessment effort from over 240 hours to under one hour."
 pubDate: "Jun 30 2025"
-heroImage: "/post_img.webp"
+heroImage: "/code.webp"
 tags: ["Python", "ArcPy", "ESRI", "Automation"]
 ---
 
