@@ -2,7 +2,7 @@
 title: "Supporting ArcGIS Enterprise in Production"
 description: "A practical look at supporting ArcGIS Enterprise in production, covering platform administration, automation, troubleshooting and operational delivery."
 pubDate: "Dec 15 2025"
-heroImage: "/post_img.webp"
+heroImage: "/enterprise-gis/portal.webp"
 #badge: "Demo badge"
 tags: ["ESRI", "Enterprise","Administration", "Portal", "Azure"]
 ---
@@ -17,14 +17,14 @@ One of the most valuable lessons I learned was that successful enterprise system
 
 <h4>During this period I was involved in:</h4>
 
-<li>Supporting ArcGIS Enterprise environments across DEV, QAS and PRD environments
-<li>User access, licensing and platform administration
-<li>GIS application troubleshooting and incident resolution
-<li>FME Flow automation support and enhancement
-<li>Azure-hosted GIS infrastructure
-<li>Platform upgrades and maintenance activities
-<li>GIS integrations with external business systems
-<li>Cross-team coordination to resolve operational issues and dependencies
+- Supporting ArcGIS Enterprise environments across DEV, QAS and PRD environments
+- User access, licensing and platform administration
+- GIS application troubleshooting and incident resolution
+- FME Flow automation support and enhancement
+- Azure-hosted GIS infrastructure
+- Platform upgrades and maintenance activities
+- GIS integrations with external business systems
+- Cross-team coordination to resolve operational issues and dependencies
 
 <blockquote>
     <p>
